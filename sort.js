@@ -56,9 +56,25 @@ function selectionSort(arr) {
     return arr;
 }
 
+function insertionSort(arr) {
+  for (let i = 1; i < arr.length; i++) {
+    let key = arr[i];
+    let j = i - 1;
+
+    while (j >= 0 && arr[j] > key) {
+      arr[j + 1] = arr[j];
+      j--;
+    }
+
+    arr[j + 1] = key;
+  }
+  return arr;
+}
+
 let numbers = [5, 3, 8, 4, 2, 7, 1, 10];
 
 console.log("Original array:", numbers);
 console.log("Bubble Sort:", bubbleSort(numbers));
 console.log("Quick Sort:", quickSort(numbers));
-console.log("Selection Sort:", selectionSort(numbers))
+console.log("Selection Sort:", selectionSort(numbers));
+console.log("Selection Sort:", insertionSort(numbers));
