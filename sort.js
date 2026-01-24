@@ -71,6 +71,24 @@ function insertionSort(arr) {
   return arr;
 }
 
+function mergeSort(arr) {
+    if (arr.length <= 1) return arr;
+
+    const mid = Math.floor(arr.length / 2);
+    const left = mergeSort(arr.slice(0, mid));
+    const right = mergeSort(arr.slice(mid));
+
+    let result = [];
+    let i = 0, j = 0;
+
+    while (i < left.length && j < right.length) {
+        result.push(left[i] <= right[j] ? left[i++] : right[j++]);
+    }
+
+    return result.concat(left.slice(i), right.slice(j));
+}
+
+
 let numbers = [5, 3, 8, 4, 2, 7, 1, 10];
 
 console.log("Original array:", numbers);
@@ -78,3 +96,4 @@ console.log("Bubble Sort:", bubbleSort(numbers));
 console.log("Quick Sort:", quickSort(numbers));
 console.log("Selection Sort:", selectionSort(numbers));
 console.log("Selection Sort:", insertionSort(numbers));
+console.log("Merge Sort:", mergeSort(numbers));
