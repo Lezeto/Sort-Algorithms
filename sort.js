@@ -88,6 +88,24 @@ function mergeSort(arr) {
     return result.concat(left.slice(i), right.slice(j));
 }
 
+function shellSort(arr) {
+  let n = arr.length;
+  for (let gap = Math.floor(n / 2); gap > 0; gap = Math.floor(gap / 2)) {
+    for (let i = gap; i < n; i++) {
+      let temp = arr[i];
+      let j = i;
+      while (j >= gap && arr[j - gap] > temp) {
+        arr[j] = arr[j - gap];
+        j -= gap;
+      }
+      arr[j] = temp;
+    }
+  }
+  return arr;
+}
+
+
+
 
 let numbers = [5, 3, 8, 4, 2, 7, 1, 10];
 
@@ -97,3 +115,4 @@ console.log("Quick Sort:", quickSort(numbers));
 console.log("Selection Sort:", selectionSort(numbers));
 console.log("Selection Sort:", insertionSort(numbers));
 console.log("Merge Sort:", mergeSort(numbers));
+console.log("Merge Sort:", shellSort(numbers));
