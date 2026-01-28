@@ -104,6 +104,26 @@ function shellSort(arr) {
   return arr;
 }
 
+function bitonicSort(arr) {
+  const n = arr.length;
+  for (let k = 2; k <= n; k <<= 1) {
+    for (let j = k >> 1; j > 0; j >>= 1) {
+      for (let i = 0; i < n; i++) {
+        const ixj = i ^ j;
+        if (ixj > i) {
+          const asc = (i & k) === 0;
+          if ((arr[i] > arr[ixj]) === asc) {
+            const tmp = arr[i];
+            arr[i] = arr[ixj];
+            arr[ixj] = tmp;
+          }
+        }
+      }
+    }
+  }
+  return arr;
+}
+
 
 
 
@@ -115,4 +135,5 @@ console.log("Quick Sort:", quickSort(numbers));
 console.log("Selection Sort:", selectionSort(numbers));
 console.log("Selection Sort:", insertionSort(numbers));
 console.log("Merge Sort:", mergeSort(numbers));
-console.log("Merge Sort:", shellSort(numbers));
+console.log("ShellSort:", shellSort(numbers));
+console.log("Bitonic Sort:", bitonicSort(numbers));
