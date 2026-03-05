@@ -137,6 +137,32 @@ function gnomeSort(arr) {
   return arr;
 }
 
+function cocktailShakerSort(arr) {
+    let start = 0;
+    let end = arr.length - 1;
+    let swapped = true;
+    while (swapped) {
+        swapped = false;
+        for (let i = start; i < end; i++) {
+            if (arr[i] > arr[i + 1]) {
+                [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+                swapped = true;
+            }
+        }
+        if (!swapped) break;
+        swapped = false;
+        end--;
+        for (let i = end; i > start; i--) {
+            if (arr[i] < arr[i - 1]) {
+                [arr[i], arr[i - 1]] = [arr[i - 1], arr[i]];
+                swapped = true;
+            }
+        }
+        start++;
+    }
+    return arr;
+}
+
 
 
 
@@ -151,3 +177,4 @@ console.log("Merge Sort:", mergeSort(numbers));
 console.log("Shell Sort:", shellSort(numbers));
 console.log("Bitonic Sort:", bitonicSort(numbers));
 console.log("gnome Sort:", gnomeSort(numbers));
+console.log("cocktail ShakerSort:", cocktailShakerSort(numbers));
